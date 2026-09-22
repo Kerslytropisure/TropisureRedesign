@@ -1,0 +1,60 @@
+/* Only global rules that antd's reset does not cover. Everything visual lives
+   in the design tokens (src/theme/tokens.js) — avoid adding styling here. */
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sidebar / long token tables: a thinner scrollbar reads less noisy. */
+* {
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.35);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Horizontal menu: brand underline, body-coloured label.
+
+   antd paints the active label and the active underline from a single token
+   (Menu.horizontalItemSelectedColor — see menu/style/theme.js, where `color`
+   and `borderBottomColor` both read it), so the two cannot be separated
+   through the theme. The token carries the label; the bar is restored to the
+   brand here. This is the one visual rule that cannot live in tokens.js.
+
+   Selector note: antd's own rule is (0,3,1) and is injected at runtime, so the
+   extra .ant-menu-root here is what makes this land. Only the states antd
+   actually colours are listed — the resting ::after must stay transparent. */
+.ant-menu.ant-menu-root.ant-menu-horizontal > .ant-menu-item-selected::after,
+.ant-menu.ant-menu-root.ant-menu-horizontal > .ant-menu-submenu-selected::after,
+.ant-menu.ant-menu-root.ant-menu-horizontal > .ant-menu-item:hover::after,
+.ant-menu.ant-menu-root.ant-menu-horizontal > .ant-menu-submenu:hover::after,
+.ant-menu.ant-menu-root.ant-menu-horizontal > .ant-menu-item-active::after,
+.ant-menu.ant-menu-root.ant-menu-horizontal > .ant-menu-submenu-active::after,
+.ant-menu.ant-menu-root.ant-menu-horizontal > .ant-menu-item-open::after,
+.ant-menu.ant-menu-root.ant-menu-horizontal > .ant-menu-submenu-open::after {
+  border-bottom-color: var(--ant-color-primary);
+}

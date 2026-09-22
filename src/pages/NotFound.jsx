@@ -1,0 +1,17 @@
+import { Link } from 'react-router-dom';
+import { Button, Result } from 'antd';
+
+export default function NotFound() {
+  return (
+    <Result
+      status="404"
+      title="404"
+      subTitle="That page does not exist in this prototype."
+      extra={
+        <Link to="/">
+          <Button type="primary">Back to overview</Button>
+        </Link>
+      }
+    />
+  );
+}
