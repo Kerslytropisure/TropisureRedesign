@@ -17,6 +17,7 @@
  * @param {string}  options.defaultHoverInk its hover border AND label.
  * @param {string}  options.primaryHover      primary button hover fill.
  * @param {string}  options.selectedLabelColor label of the active menu item / tab.
+ * @param {string}  options.navSelectedColor   label of the selected sidebar item.
  * @param {number}  options.radiusSM        the resolved small corner radius.
  */
 export const componentTokens = ({
@@ -27,6 +28,7 @@ export const componentTokens = ({
   defaultHoverInk,
   primaryHover,
   selectedLabelColor,
+  navSelectedColor,
   radiusSM,
 } = {}) => ({
   Button: {
@@ -72,6 +74,8 @@ export const componentTokens = ({
     // Horizontal menus: the active item's label matches an inactive one, so the
     // underline carries the state on its own rather than a colour change too.
     ...(selectedLabelColor ? { horizontalItemSelectedColor: selectedLabelColor } : null),
+    // Vertical/inline nav: antd puts colorPrimary here; Mangrove 10 instead.
+    ...(navSelectedColor ? { itemSelectedColor: navSelectedColor } : null),
   },
   Table: {
     headerBorderRadius: 0,

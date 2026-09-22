@@ -105,6 +105,9 @@ export function buildTheme({ mode = 'light', compact = false, primary, radius })
       // step 1 fill with step 10 border and label, 16.16:1 in both.
       defaultHoverBg: rampFor(mangrove, mode)[0],
       defaultHoverInk: rampFor(mangrove, mode)[9],
+      // Sidebar nav: the selected label is Mangrove 10 rather than the brand,
+      // so the vertical menu does not compete with the primary colour.
+      navSelectedColor: rampFor(mangrove, mode)[9],
       primaryHover: picked && rampHover(picked.ramp, mode),
       // Active menu items and tabs read as body text, not as brand links; the
       // underline / ink bar is what carries the selected state.
